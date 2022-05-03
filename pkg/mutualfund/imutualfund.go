@@ -3,13 +3,13 @@ package mutualfund
 type IMutualFund interface {
 	GetName() string
 	GetIndicator() Indicator
-	GetDetail() Detail
+	GetAUM() float64
 }
 
 type MutualFund struct {
 	Name      string
 	Indicator Indicator
-	Detail    Detail
+	AUM       float64
 }
 
 func (mf *MutualFund) GetName() string {
@@ -20,6 +20,6 @@ func (mf *MutualFund) GetIndicator() Indicator {
 	return mf.Indicator
 }
 
-func (mf *MutualFund) GetDetail() Detail {
-	return mf.Detail
+func (mf *MutualFund) GetAUM() float64 {
+	return mf.AUM
 }

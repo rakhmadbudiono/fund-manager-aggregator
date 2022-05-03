@@ -45,8 +45,8 @@ func WithIndicator(indicator Indicator) MutualFundOption {
 	}
 }
 
-func WithDetail(detail Detail) MutualFundOption {
+func WithAUM(aum float64) MutualFundOption {
 	return func(mf *MutualFund) {
-		mf.Detail = detail
+		mf.AUM = aum
 	}
 }

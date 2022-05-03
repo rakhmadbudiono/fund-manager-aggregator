@@ -10,15 +10,14 @@ import (
 )
 
 var (
-	name          string               = "Gopher Capital"
-	fundtype      string               = "YOLO"
-	aum           float64              = 69420
-	risk          mutualfund.RiskLevel = mutualfund.RiskLow
-	beta          float32              = 1
-	alpha         float32              = 0
-	sharpe        float32              = 1
-	treynor       float32              = 0
-	trackingError float32              = 0
+	name          string  = "Gopher Capital"
+	fundtype      string  = "YOLO"
+	aum           float64 = 69420
+	beta          float32 = 1
+	alpha         float32 = 0
+	sharpe        float32 = 1
+	treynor       float32 = 0
+	trackingError float32 = 0
 )
 
 func TestNewMutualFund(t *testing.T) {
@@ -62,16 +61,11 @@ func TestNewMutualFundWithIndicator(t *testing.T) {
 	)
 }
 
-func TestNewMutualFundWithDetail(t *testing.T) {
-	detail := mutualfund.Detail{
-		AUM:  aum,
-		Risk: risk,
-	}
-
+func TestNewMutualFundWithAUM(t *testing.T) {
 	mf := mutualfund.NewMutualFund(
 		name,
 		fundtype,
-		mutualfund.WithDetail(detail),
+		mutualfund.WithAUM(aum),
 	)
 
 	assert.Equal(
@@ -83,8 +77,8 @@ func TestNewMutualFundWithDetail(t *testing.T) {
 
 	assert.Equal(
 		t,
-		detail,
-		mf.GetDetail(),
-		fmt.Sprintf("Expect detail to be %v, but got %v", detail, mf.GetDetail()),
+		aum,
+		mf.GetAUM(),
+		fmt.Sprintf("Expect aum to be %v, but got %v", aum, mf.GetAUM()),
 	)
 }
