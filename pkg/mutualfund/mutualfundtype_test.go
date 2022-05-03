@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/rakhmadbudiono/fund-manager-aggregator/pkg/mutualfund"
+	"github.com/rakhmadbudiono/mutual-fund-aggregator/pkg/mutualfund"
 
 	"github.com/stretchr/testify/assert"
 )

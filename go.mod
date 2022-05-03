@@ -1,4 +1,4 @@
-module github.com/rakhmadbudiono/fund-manager-aggregator
+module github.com/rakhmadbudiono/mutual-fund-aggregator
 
 go 1.17
 
