@@ -1,5 +1,14 @@
 package mutualfund
 
+type MutualFundType int
+
+const (
+	Mixed MutualFundType = iota
+	Stock
+	FixedIncome
+	MoneyMarket
+)
+
 type IMutualFund interface {
 	GetName() string
 	GetIndicator() Indicator

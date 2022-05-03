@@ -10,10 +10,10 @@ import (
 )
 
 var (
-	fixedincome string = "Pendapatan Tetap"
-	mixed       string = "Campuran"
-	moneymarket string = "Pasar Uang"
-	stock       string = "Saham"
+	mixed       mutualfund.MutualFundType = 0
+	stock       mutualfund.MutualFundType = 1
+	fixedincome mutualfund.MutualFundType = 2
+	moneymarket mutualfund.MutualFundType = 3
 )
 
 func TestNewFixedIncomeMutualFund(t *testing.T) {

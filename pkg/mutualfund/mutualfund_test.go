@@ -10,14 +10,14 @@ import (
 )
 
 var (
-	name          string  = "Gopher Capital"
-	fundtype      string  = "YOLO"
-	aum           float64 = 69420
-	beta          float32 = 1
-	alpha         float32 = 0
-	sharpe        float32 = 1
-	treynor       float32 = 0
-	trackingError float32 = 0
+	name          string                    = "Gopher Capital"
+	fundtype      mutualfund.MutualFundType = 4 // Other
+	aum           float64                   = 69420
+	beta          float32                   = 1
+	alpha         float32                   = 0
+	sharpe        float32                   = 1
+	treynor       float32                   = 0
+	trackingError float32                   = 0
 )
 
 func TestNewMutualFund(t *testing.T) {
