@@ -1,4 +1,4 @@
-package fundmanager
+package mutualfund
 
 type Indicator struct {
 	Beta          float32

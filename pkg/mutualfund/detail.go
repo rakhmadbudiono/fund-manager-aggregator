@@ -1,4 +1,4 @@
-package fundmanager
+package mutualfund
 
 type RiskLevel int
 
