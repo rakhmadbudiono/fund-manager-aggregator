@@ -9,14 +9,14 @@ import (
 	"github.com/rakhmadbudiono/mutual-fund-aggregator/pkg/mutualfund"
 )
 
-type mutualFundResponse struct {
-	Name         string                         `json:"Name"`
-	FundType     mutualfund.MutualFundType      `json:"Type"`
-	Performances []performanceResponse          `json:"Performances"`
-	AUMs         []assetUnderManagementResponse `json:"AssetUnderManagements"`
+type snapshotMutualFundResponse struct {
+	Name         string                        `json:"Name"`
+	FundType     mutualfund.MutualFundType     `json:"Type"`
+	Performances []snapshotPerformanceResponse `json:"Performances"`
+	AUMs         []snapshotAUMResponse         `json:"AssetUnderManagements"`
 }
 
-type performanceResponse struct {
+type snapshotPerformanceResponse struct {
 	Beta          float32 `json:"Beta"`
 	JensenAlpha   float32 `json:"JensenAlpha"`
 	SharpeRatio   float32 `json:"SharpeRatio"`
@@ -24,7 +24,7 @@ type performanceResponse struct {
 	TrackingError float32 `json:"TrackingError"`
 }
 
-type assetUnderManagementResponse struct {
+type snapshotAUMResponse struct {
 	Value float64 `json:"Value"`
 }
 
@@ -72,7 +72,7 @@ func GetMutualFundByID(ID int) (mutualfund.IMutualFund, error) {
 }
 
 func byteToMutualFund(bytes []byte) (mutualfund.IMutualFund, error) {
-	mfResp := &mutualFundResponse{}
+	mfResp := &snapshotMutualFundResponse{}
 
 	if err := json.Unmarshal(bytes, mfResp); err != nil {
 		return nil, err
