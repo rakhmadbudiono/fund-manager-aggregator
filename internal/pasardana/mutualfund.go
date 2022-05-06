@@ -49,7 +49,7 @@ func byteToInt(bytes []byte) (int, error) {
 
 	number, err := strconv.Atoi(text)
 	if err != nil {
-		return 0, nil
+		return 0, err
 	}
 
 	return number, nil
@@ -57,7 +57,7 @@ func byteToInt(bytes []byte) (int, error) {
 
 func GetMutualFundByID(ID int) (mutualfund.IMutualFund, error) {
 	res, err := Client.Get(
-		fmt.Sprintf("%s/FundService/GetSnapshot/%d", BaseURL, ID),
+		fmt.Sprintf("%s/FundService/GetSnapshot?fundId=%d", BaseURL, ID),
 	)
 	if err != nil {
 		return nil, err
