@@ -1,5 +1,9 @@
 package mutualfund
 
+import (
+	"fmt"
+)
+
 type MutualFundType int
 
 const (
@@ -13,6 +17,7 @@ type IMutualFund interface {
 	GetName() string
 	GetIndicator() Indicator
 	GetAUM() float64
+	ToArrayString() []string
 }
 
 type MutualFund struct {
@@ -31,4 +36,14 @@ func (mf *MutualFund) GetIndicator() Indicator {
 
 func (mf *MutualFund) GetAUM() float64 {
 	return mf.AUM
+}
+
+func (mf *MutualFund) ToArrayString() []string {
+	arr := []string{}
+
+	arr = append(arr, mf.Name)
+	arr = append(arr, mf.Indicator.toArrayString()...)
+	arr = append(arr, fmt.Sprintf("%f", mf.AUM))
+
+	return arr
 }

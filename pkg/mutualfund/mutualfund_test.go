@@ -82,3 +82,36 @@ func TestNewMutualFundWithAUM(t *testing.T) {
 		fmt.Sprintf("Expect aum to be %v, but got %v", aum, mf.GetAUM()),
 	)
 }
+
+func TestToArrayString(t *testing.T) {
+	expected := []string{
+		"Gopher Capital",
+		fmt.Sprintf("%f", beta),
+		fmt.Sprintf("%f", alpha),
+		fmt.Sprintf("%f", sharpe),
+		fmt.Sprintf("%f", treynor),
+		fmt.Sprintf("%f", trackingError),
+		fmt.Sprintf("%f", aum),
+	}
+
+	indicator := mutualfund.Indicator{
+		Beta:          beta,
+		JensenAlpha:   alpha,
+		SharpeRatio:   sharpe,
+		TreynorRatio:  treynor,
+		TrackingError: trackingError,
+	}
+	mf := mutualfund.NewMutualFund(
+		name,
+		fundtype,
+		mutualfund.WithIndicator(indicator),
+		mutualfund.WithAUM(aum),
+	)
+
+	assert.Equal(
+		t,
+		expected,
+		mf.ToArrayString(),
+		fmt.Sprintf("Expect return to be %s, but got %s", expected, mf.ToArrayString()),
+	)
+}
