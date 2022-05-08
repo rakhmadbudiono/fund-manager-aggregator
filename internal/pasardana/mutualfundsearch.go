@@ -10,9 +10,9 @@ type searchMutualFundResponse struct {
 	ID int `json:"Id"`
 }
 
-func GetAllMutualFundIDs() ([]int, error) {
-	res, err := Client.Get(
-		fmt.Sprintf("%s/FundSearchResult/GetAll", BaseURL),
+func (pc *PasardanaClient) GetAllMutualFundIDs() ([]int, error) {
+	res, err := pc.Client.Get(
+		fmt.Sprintf("%s/FundSearchResult/GetAll", pc.BaseURL),
 	)
 	if err != nil {
 		return nil, err

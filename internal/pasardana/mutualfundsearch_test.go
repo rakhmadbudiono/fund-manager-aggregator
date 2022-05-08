@@ -21,8 +21,12 @@ func TestGetAllMutualFunds(t *testing.T) {
 	}))
 	defer server.Close()
 
-	pasardana.BaseURL = server.URL
-	mf, err := pasardana.GetAllMutualFundIDs()
+	pc := &pasardana.PasardanaClient{
+		Client:  http.DefaultClient,
+		BaseURL: server.URL,
+	}
+
+	mf, err := pc.GetAllMutualFundIDs()
 
 	assert.Equal(t, nil, err)
 	assert.Equal(t, expected, mf)

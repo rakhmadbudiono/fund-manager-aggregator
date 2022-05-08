@@ -23,8 +23,12 @@ func TestCountMutualFunds(t *testing.T) {
 	}))
 	defer server.Close()
 
-	pasardana.BaseURL = server.URL
-	count, err := pasardana.CountMutualFunds()
+	pc := &pasardana.PasardanaClient{
+		Client:  http.DefaultClient,
+		BaseURL: server.URL,
+	}
+
+	count, err := pc.CountMutualFunds()
 
 	assert.Equal(t, nil, err)
 	assert.Equal(t, expectedCount, count)
@@ -54,8 +58,12 @@ func TestGetMutualFundByID(t *testing.T) {
 	}))
 	defer server.Close()
 
-	pasardana.BaseURL = server.URL
-	mf, err := pasardana.GetMutualFundByID(1)
+	pc := &pasardana.PasardanaClient{
+		Client:  http.DefaultClient,
+		BaseURL: server.URL,
+	}
+
+	mf, err := pc.GetMutualFundByID(1)
 
 	assert.Equal(t, nil, err)
 	assert.Equal(t, expected, mf)

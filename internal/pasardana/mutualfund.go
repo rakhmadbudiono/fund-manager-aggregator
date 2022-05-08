@@ -28,9 +28,9 @@ type snapshotAUMResponse struct {
 	Value float64 `json:"Value"`
 }
 
-func CountMutualFunds() (int, error) {
-	res, err := Client.Get(
-		fmt.Sprintf("%s/FundSearchResult/GetCount", BaseURL),
+func (pc *PasardanaClient) CountMutualFunds() (int, error) {
+	res, err := pc.Client.Get(
+		fmt.Sprintf("%s/FundSearchResult/GetCount", pc.BaseURL),
 	)
 	if err != nil {
 		return 0, err
@@ -55,9 +55,9 @@ func byteToInt(bytes []byte) (int, error) {
 	return number, nil
 }
 
-func GetMutualFundByID(ID int) (mutualfund.IMutualFund, error) {
-	res, err := Client.Get(
-		fmt.Sprintf("%s/FundService/GetSnapshot?fundId=%d", BaseURL, ID),
+func (pc *PasardanaClient) GetMutualFundByID(ID int) (mutualfund.IMutualFund, error) {
+	res, err := pc.Client.Get(
+		fmt.Sprintf("%s/FundService/GetSnapshot?fundId=%d", pc.BaseURL, ID),
 	)
 	if err != nil {
 		return nil, err
