@@ -1,1 +1,3 @@
 *.out
+.~lock.mutual-funds.csv#
+test.csv
